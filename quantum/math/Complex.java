@@ -29,6 +29,16 @@ public class Complex {
 
         return newComNum;
     }
+    public Complex subtract(Complex other) {
+        //(a+bi)−(c+di)=(a−c)+(b−d)i
+        double subtractReal = real - other.getReal();
+        double subtractImaginary = imaginary - other.getImaginary();
+
+        Complex newComNum = new Complex(subtractReal, subtractImaginary);
+
+        return newComNum;
+    }
+    
 
     // Multiplication: (a + bi)(c + di) = (ac - bd) + (ad + bc)i
 

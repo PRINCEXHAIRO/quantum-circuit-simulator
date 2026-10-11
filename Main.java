@@ -1,13 +1,45 @@
 import quantum.math.Complex;
 import quantum.math.Qubit;
+import quantum.gates.Gate;
+//import quantum.gates.XGate; 
+import quantum.gates.HGate;
+import quantum.gates.XGate;
+import java.util.ArrayList;
+import quantum.circuit.Circuit; 
 
 public class Main {
 
     public static void main(String[] args) {
-        Qubit z3 = new Qubit(new Complex(1 / Math.sqrt(2),0), new Complex(1 / Math.sqrt(2),0));
+        
+       Complex alpha = new Complex(1, 0);
+       Complex beta = new Complex(0, 0);
 
-       System.out.println(z3.isNormalized()); 
-       System.out.println(z3.probabilityOfZero());
-       System.out.println(z3.probabilityOfOne()); 
+       Qubit qubit = new Qubit(alpha, beta);
+       HGate hGate = new HGate();
+       XGate xGate = new XGate(); 
+       
+       ArrayList<Gate> gates = new ArrayList<>();
+          gates.add(hGate); 
+          gates.add(xGate);
+          gates.add(hGate); 
+
+       Circuit circuit = new Circuit(gates);
+
+       Qubit result = circuit.circuitExecution(qubit);
+
+    //    Complex alphaResult = result.getAlpha(); 
+    //    Complex betaResult = result.getBeta(); 
+
+    //    System.out.println(alphaResult.getImaginary());
+    //    System.out.println(alphaResult.getReal());
+
+    //    System.out.println(betaResult.getImaginary());
+    //    System.out.println(betaResult.getReal());
+
+       double[] probabilites = circuit.getprobabilities(result); 
+       System.out.print(probabilites); 
+    
     }
 }
+
+

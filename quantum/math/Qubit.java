@@ -15,12 +15,11 @@ public class Qubit {
        double magBeta =  beta.magnitude(); 
        
         //∣α∣^2+∣β∣^2 = 1
-        double isNormal = ((magAlpha * magAlpha) + (magBeta * magBeta)); 
+       double isNormal = ((magAlpha * magAlpha) + (magBeta * magBeta)); 
         
         if(isNormal == 1){
             return true; 
         }
-
         return false;  
     }
     public double probabilityOfZero(){
