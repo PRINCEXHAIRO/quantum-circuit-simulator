@@ -1,0 +1,73 @@
+<header class="app-header">
+  <div class="brand">
+    <span class="brand-icon">⚛</span>
+    <span>QUANTUM LAB</span>
+  </div>
+
+  <span class="version">SIMULATOR / V1</span>
+</header>
+
+<h1>Quantum Circuit Simulator</h1>
+
+<p>Build and simulate your own quantum circuits.</p>
+
+<section>
+  <h2>Available Gates</h2>
+
+  <button class="gate-button" (click)="addGate('H')">+ H Gate</button>
+  <button class="gate-button" (click)="addGate('X')"> + X Gate</button>
+
+</section>
+<section>
+  <h2>Your Circuit</h2>
+ 
+  <div class="circuit">
+    <span class="qubit-label">|0⟩</span>
+
+    @for (gate of gates; track $index) {
+      <div class="gate">{{ gate }}</div>
+    }
+  </div>
+</section>
+
+<div class="simulation-actions">
+  <button class="run-button" (click)="runSimulation()">
+    ▶ Run Simulation
+  </button>
+
+  <button class="reset-button" (click)="clearCircuit()">
+    ↻ Reset Circuit
+  </button>
+</div>
+
+<section class="results">
+  <h2>Measurement Probabilities</h2>
+
+  @if (probabilities.length === 2) {
+    <div class="probability">
+      <p>|0⟩ — {{ (probabilities[0] * 100).toFixed(2) }}%</p>
+
+      <div class="progress-track">
+        <div
+          class="progress-fill"
+          [style.width.%]="probabilities[0] * 100">
+        </div>
+      </div>
+    </div>
+
+    <div class="probability">
+      <p>|1⟩ — {{ (probabilities[1] * 100).toFixed(2) }}%</p>
+
+      <div class="progress-track">
+        <div
+          class="progress-fill"
+          [style.width.%]="probabilities[1] * 100">
+        </div>
+      </div>
+    </div>
+  }
+</section>
+
+@if (errorMessage) {
+  <p class="error">{{ errorMessage }}</p>
+}

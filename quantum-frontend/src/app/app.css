@@ -1,0 +1,234 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #080808;
+  color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 40px;
+  box-sizing: border-box;
+}
+/* Circuit workspace */
+.circuit {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 35px 20px;
+  min-height: 100px;
+  background-color: #0e0e0e;
+  border: 1px solid #444444;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+/* Glowing laser wire */
+.circuit::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  height: 2px;
+  background-color: #ff3030;
+  box-shadow:
+    0 0 8px #ff3030,
+    0 0 18px rgba(255, 48, 48, 0.7);
+  z-index: 0;
+}
+
+/* Quantum gates */
+.gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 55px;
+  height: 60px;
+  background-color: #160606;
+  color: white;
+  border: 2px solid #ff3030;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 12px rgba(255, 48, 48, 0.5);
+}
+
+/* Initial qubit */
+.qubit-label {
+  position: relative;
+  z-index: 1;
+  background-color: #0e0e0e;
+  color: white;
+  font-size: 22px;
+  padding-right: 10px;
+  flex-shrink: 0;
+}
+.gate-button {
+  background-color: #160606;
+  color: #ffffff;
+  border: 1px solid #ff3030;
+  border-radius: 8px;
+  padding: 14px 28px;
+  margin-right: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 48, 48, 0.25);
+  transition: all 0.2s ease;
+}
+
+.gate-button:hover {
+  background-color: #c30010;
+  box-shadow: 0 0 20px rgba(255, 48, 48, 0.6);
+}
+/* Measurement results panel */
+.results {
+  background-color: #0e0e0e;
+  border: 1px solid #444444;
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+.results h2 {
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+/* Spacing between probabilities */
+.probability {
+  margin-bottom: 25px;
+}
+
+.probability p {
+  color: #f5f5f5;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+/* Background of each bar */
+.progress-track {
+  height: 14px;
+  background-color: #292929;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Glowing red probability bar */
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c30010, #ff3030);
+  border-radius: 20px;
+  box-shadow: 0 0 12px rgba(255, 48, 48, 0.7);
+  transition: width 0.5s ease;
+}
+/* Container for simulation controls */
+.simulation-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Run Simulation - primary action */
+.run-button {
+  background-color: #c30010;
+  color: white;
+  border: 1px solid #ff3030;
+  border-radius: 8px;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 48, 48, 0.35);
+  transition: all 0.2s ease;
+}
+
+.run-button:hover {
+  background-color: #f01e2c;
+  box-shadow: 0 0 22px rgba(255, 48, 48, 0.65);
+}
+
+/* Reset Circuit - secondary action */
+.reset-button {
+  background-color: #141414;
+  color: #f5f5f5;
+  border: 1px solid #666666;
+  border-radius: 8px;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-button:hover {
+  background-color: #262626;
+  border-color: #ffffff;
+}
+
+/* Quantum Lab header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #333333;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.brand-icon {
+  color: #ff3030;
+  font-size: 28px;
+}
+
+.version {
+  color: #999999;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+/* Responsive layout */
+@media (max-width: 768px) {
+  :host {
+    padding: 20px;
+  }
+
+  .app-header {
+    gap: 15px;
+  }
+
+  .brand {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .version {
+    font-size: 10px;
+  }
+
+  .circuit {
+    gap: 20px;
+    padding: 25px 15px;
+  }
+
+  .gate {
+    min-width: 45px;
+    height: 50px;
+  }
+
+  .simulation-actions {
+    flex-wrap: wrap;
+  }
+}
