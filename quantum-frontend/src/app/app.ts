@@ -28,7 +28,7 @@ export class App {
   this.errorMessage = '';
 
   this.http.post<number[]>(
-    'http://localhost:8080/api/simulate',
+    '/api/simulate',
     this.gates
   ).subscribe({
     next: (result) => {
